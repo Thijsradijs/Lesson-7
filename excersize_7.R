@@ -13,8 +13,8 @@ print(as.Date(dates, format="%Y%j"))
 sceneID <- names(tura)
 # parse these names to extract scene information
 sceneinfo <- getSceneinfo(sceneID)
-plot(tura, c[4])
-
+#plot(tura, c[4])
+sceneinfo$year <- factor(substr(sceneinfo$date, 1, 4), levels = c(1984:2013))
 #first take mean of pictures per year
 mean2000 <- calc(subset(tura,subset=which(sceneinfo$year==2000)), fun= mean,na.rm=T)
 mean2005 <- calc(subset(tura,subset=which(sceneinfo$year==2005)), fun= mean,na.rm=T)
@@ -27,15 +27,15 @@ plot(vb, 1)
 
 #make RGB of years (n1=2000(red), n2=2005(green), n3=2010(blue))
 
-?plotRGB
+#?plotRGB
 plotRGB(vb, r = 1, g=2, b=3, stretch='hist')
 
 
 #select both extents
 
-e1 <- drawExtent()
-e2 <- drawExtent()
-?raster
+#e1 <- drawExtent()
+#e2 <- drawExtent()
+#?raster
 
 #assign data from raster through extract
 e1 <- extent(c(819682.6,820084.6,831424.5,831770.3)) 
